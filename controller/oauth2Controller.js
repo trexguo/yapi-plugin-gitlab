@@ -1,6 +1,6 @@
 const baseController = require('controllers/base.js');
 const yapi = require('yapi.js');
-const http = require('http')
+const http = require('https')
 
 class oauth2Controller {
     constructor(ctx){
