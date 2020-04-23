@@ -1,6 +1,6 @@
 {
   "name": "yapi-plugin-gitlab-https",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "devops with gitlab for yapi",
   "main": "index.js",
   "scripts": {
