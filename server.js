@@ -2,14 +2,19 @@ const request = require('request');
 const controller = require('./controller/oauth2Controller');
 const gitlabController = require('./controller/gitlabController');
 const yapi = require('yapi.js');
+const fs = require('fs');	// 用于证书文件读取
 
 module.exports = function (options) {
-    const {emailPostfix, emailKey, userKey, host, loginPath, redirectUri} = options;
+    const {emailPostfix, emailKey, userKey, host, loginPath, redirectUri, ca_path} = options;
 
     this.bindHook('third_login', (ctx) => {
         let token = ctx.request.body.token || ctx.request.query.token;
+        if (host.indexOf("https")) {
+            options.ca = fs.readFileSync(ca_path);
+        } 	
+
         return new Promise((resolve, reject) => {
-            request(host + loginPath + "?access_token=" + token, function (error, response, body) {
+            request(host + loginPath + "?access_token=" + token, options, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     let result = JSON.parse(body);
                     if (result) {

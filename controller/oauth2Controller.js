@@ -1,6 +1,8 @@
 const baseController = require('controllers/base.js');
 const yapi = require('yapi.js');
-const http = require('https')
+const http = require('http');
+const https = require('https');	// 添加 https 依赖
+const fs = require('fs');	// 用于证书文件读取
 
 class oauth2Controller {
     constructor(ctx){
@@ -54,7 +56,21 @@ class oauth2Controller {
     requestInfo(ops, path, method) {
         return new Promise((resolve, reject) => {
             let req = '';
-            let http_client = http.request(ops.host + path,
+
+            let client = http;	// 默认为 http 请求
+            let options = {
+                method: method
+            };
+            if (ops.host.indexOf('https') === 0) {	// 如果 host 以 https 开头
+                client = https;	// 将连接设置为 https
+     
+                // gitlab 证书是自己生成的不获取证书文件会报 UNABLE_TO_VERIFY_LEAF_SIGNATURE 错误
+                // 这个错误可以通过两种方式解决（任选一种即可）：
+                // 1）options.rejectUnauthorized 设置成 false
+                // 2）将 ssl 的根证书文件赋值给 options.ca
+                options.ca = fs.readFileSync(ops.ca_path);
+            }
+            let http_client = client.request(ops.host + path,
                 {
                     method: method
                 },

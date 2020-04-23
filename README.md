@@ -1,4 +1,4 @@
-# yapi-plugin-gitlab
+# yapi-plugin-gitlab-https
 
 yapi gitlab（支持gitlab 10.0.0以上）集成插件，配置方法如下：
 
@@ -42,10 +42,12 @@ yapi gitlab（支持gitlab 10.0.0以上）集成插件，配置方法如下：
         "tokenPath" : "/oauth/token",
         "emailKey" : "email",
         "userKey" : "username",
-        "emailPostfix" : "@yapi.com"
+        "emailPostfix" : "@yapi.com",
+        "ca_path": "ca证书绝对路径"
     }
 }]
 ```
+
 配置含义如下：
 
 - `host` gitlab部署地址
@@ -56,6 +58,7 @@ yapi gitlab（支持gitlab 10.0.0以上）集成插件，配置方法如下：
 - `emailKey` gitlab用户信息邮箱关键字
 - `userKey` gitlab用户信息用户名关键字
 - `emailPostfix` 如果gitlab用户没有邮箱信息在yapi中，已gitlab用户名+该后缀作为邮箱地址
+- `ca_path` 如果host为https，则需要传入ca证书的绝对路径
 
 ### 效果图示
 
