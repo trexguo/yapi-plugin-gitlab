@@ -165,7 +165,7 @@ class gitlabController extends baseController{
      */
     getOptions() {
         for (let i = 0; i < yapi.WEBCONFIG.plugins.length; i++) {
-            if (yapi.WEBCONFIG.plugins[i].name === 'gitlab') {
+            if (yapi.WEBCONFIG.plugins[i].name === 'gitlab-https') {
                 return yapi.WEBCONFIG.plugins[i].options;
             }
         }

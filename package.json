@@ -1,5 +1,5 @@
 {
-  "name": "yapi-plugin-gitlab",
+  "name": "yapi-plugin-gitlab-https",
   "version": "1.0.1",
   "description": "devops with gitlab for yapi",
   "main": "index.js",
