@@ -15,9 +15,14 @@ module.exports = function (options) {
             '&response_type=code&scope=api';
     }
 
-    const GitLabComponent = () => (
-        <button onClick={gitLablogin} className="btn-home btn-home-normal" >GitLab登录</button>
-    )
+    const GitLabComponent = () => {
+        document.getElementsByClassName('row-tip')[0].remove()
+        document.getElementsByClassName('section-feature')[0].remove()
+        document.getElementsByClassName('home-section')[0].remove()
+        document.getElementsByClassName('home-section')[0].remove()
+        document.getElementsByClassName('btn-home btn-login')[0].remove()
+        return <button onClick={gitLablogin} className="btn-home btn-home-normal" >GitLab登录</button>
+    }
 
     this.bindHook('third_login', GitLabComponent);
 
