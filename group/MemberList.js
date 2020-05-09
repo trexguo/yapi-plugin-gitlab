@@ -230,7 +230,7 @@ class MemberList extends Component {
                 添加成员
               </Button>
               <Button className="btn" style={{marginLeft: '8px'}} onClick={this.asyncGitLab}>
-                gitLab成员同步
+                GitLab 成员同步
               </Button>
             </div>
           ) : (

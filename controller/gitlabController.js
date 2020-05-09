@@ -405,7 +405,7 @@ class gitlabController extends baseController{
 
         let username = this.$user.username;
         yapi.commons.saveLog({
-            content: `<a href="/user/profile/${this.getUid()}">${username}</a> 从gitlab同步了分组`,
+            content: `<a href="/user/profile/${this.getUid()}">${username}</a> 从 GitLab 同步了分组`,
             type: tag === 'groups'?'group':'project',
             uid: this.getUid(),
             username: username,

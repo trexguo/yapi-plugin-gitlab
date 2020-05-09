@@ -284,7 +284,7 @@ class ProjectMember extends Component {
                 批量导入成员
               </Button>
               <Button className="btn" onClick={this.asyncProjectGroup}>
-                gitlab项目成员同步
+                GitLab 项目成员同步
               </Button>
             </div>
           ) : (
